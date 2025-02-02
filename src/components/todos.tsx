@@ -24,7 +24,7 @@ function Todos() {
     const fetchData = async () => {
         try {
             const response = await axios.get<Todo[]>(
-                "https://jsonplaceholder.typicode.com/todos"
+                `${import.meta.env.VITE_API_KEY}/todos`
             );
             setTodos(response.data.slice(0, 30));
         } catch (error) {
@@ -43,7 +43,7 @@ function Todos() {
             </Typography>
             <TableContainer component={Paper} sx={{ boxShadow: 3, borderRadius: 2, maxHeight: "70vh" }}>
                 <Table stickyHeader aria-label="sticky table">
-                    <TableHead sx={{backgroundColor: "gray"}}>
+                    <TableHead sx={{ backgroundColor: "gray" }}>
                         <TableRow sx={{ bgcolor: "#f4f4f4" }}>
                             <TableCell sx={{ fontWeight: "bold", fontSize: "1.2rem" }}>ID</TableCell>
                             <TableCell sx={{ fontWeight: "bold", fontSize: "1.2rem" }}>Title</TableCell>
@@ -53,8 +53,8 @@ function Todos() {
                     <TableBody>
                         {todos.map((todo) => (
                             <TableRow key={todo.id} hover>
-                                <TableCell sx={{fontSize: "1.2rem"}}>{todo.id}</TableCell>
-                                <TableCell sx={{fontSize: "1.2rem"}} >{todo.title}</TableCell>
+                                <TableCell sx={{ fontSize: "1.2rem" }}>{todo.id}</TableCell>
+                                <TableCell sx={{ fontSize: "1.2rem" }} >{todo.title}</TableCell>
                                 <TableCell>
                                     <Box
                                         sx={{

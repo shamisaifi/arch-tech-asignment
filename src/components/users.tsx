@@ -29,7 +29,7 @@ const Users = () => {
     const fetchData = async () => {
         try {
             const response = await axios.get<User[]>(
-                "https://jsonplaceholder.typicode.com/users"
+                `${import.meta.env.VITE_API_KEY}/users`
             );
             setUsers(response.data.slice(0, 50));
         } catch (error) {
